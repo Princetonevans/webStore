@@ -1,0 +1,31 @@
+<div class="container" style="margin-top: 20px">
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+      <mat-form-field hintLabel="Min 3 characters">
+        <input type="text" matInput #input minlength="3" placeholder="Name" required [(ngModel)]="model.name" name="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" [(ngModel)]="model.phone" name="phone">
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Description" [(ngModel)]="model.description" name="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Service Type" required [(ngModel)]="model.types" name="types">
+          <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!contactForm.form.valid">Submit</button>
+  </form>
+</div>
+<!-- TODO: remove this: {{diagnostic}} -->
