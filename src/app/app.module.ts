@@ -13,7 +13,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent, PizzaPartyComponent } from './contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     DashboardComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    PizzaPartyComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +46,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MaterialModule,
+    HttpClientModule,
     FormsModule
   ],
+  entryComponents: [PizzaPartyComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

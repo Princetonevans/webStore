@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from './contact';
+import { MatDatepickerInputEvent, MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -8,24 +10,52 @@ import { Contact } from './contact';
 })
 export class ContactComponent implements OnInit {
 
-  types = ['Blog', 'Logo', 'Description', 'Landing Page'];
+  types = ['Blog', 'Logo', 'Ecommerce', 'Landing Page'];
 
-  model = new Contact('Princeton', 'Princetonevans@yahoo.com', 'Big Blog', 832-235-3613, 'Logo');
-
+  // model = new Contact('Princeton', 'Princetonevans@yahoo.com', 'Big Blog', '2018-11-09T06:00:00.000Z', 8322353613, 'Logo');
+  model = new Contact('', '', '', '', null, '');
   submitted = false;
+
+  minDate;
+  date;
+  constructor(public snackBar: MatSnackBar,
+              private router: Router) {
+
+  }
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.model)
+    this.snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: 2000,
+    });
+    console.log(this.model);
+    this.router.navigate(['/home'])
   }
 
-get diagnostic() {
-  return JSON.stringify(this.model)
+  // get diagnostic() {
+  //   // return JSON.stringify(this.model)
+  // }
+
+  ngOnInit() {
+  this.date = new Date();
+  this.minDate = this.date;
+  }
+
+  events: string[] = [];
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
+  }
+
 }
 
-ngOnInit() {
-
-}
-
-
-}
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  templateUrl: 'snack-bar-component.html',
+  styles: [`
+    .example-pizza-party {
+      color: #00FF00;
+    }
+  `],
+})
+export class PizzaPartyComponent {}
