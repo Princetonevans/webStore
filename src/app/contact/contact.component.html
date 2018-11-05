@@ -1,5 +1,6 @@
-<mat-card class="card">
 <div class="container" style="margin-top: 20px">
+<mat-card class="card">
+
   <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="example-container">
       <mat-form-field hintLabel="Min 3 characters">
@@ -35,9 +36,10 @@
     </div>
     <button mat-raised-button color="primary" [disabled]="!contactForm.form.valid">Submit</button>
   </form>
-</div>
+
 <!-- TODO: remove this: {{diagnostic}}
 <div class="example-events">
     <div *ngFor="let e of events">{{e}}</div>
   </div> -->
 </mat-card>
+</div>
