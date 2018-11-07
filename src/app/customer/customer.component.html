@@ -1,0 +1,54 @@
+<div class="container" style="margin-top: 20px">
+
+  <h1>Create Customer</h1>
+  <mat-card class="card">
+
+    <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="example-container">
+        <mat-form-field hintLabel="Min 3 characters">
+          <input type="text" matInput #input minlength="3" placeholder="Name" required [(ngModel)]="model.name" name="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Phone Number" [(ngModel)]="model.phone" name="phone">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Service Type" required [(ngModel)]="model.types" name="types">
+            <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+
+          </mat-select>
+          <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Complete Date" (dateChange)="addEvent('change', $event)" [(ngModel)]="model.picker" name="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker color="primary"#picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Max 500 characters">
+          <textarea matInput placeholder="Notes" #input maxlength="500" [(ngModel)]="model.notes" name="notes"></textarea>
+          <mat-hint align="end">{{input.value?.length || 0}}/500</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Total" [(ngModel)]="model.total" name="total">
+        </mat-form-field>
+
+
+
+      </div>
+      <button mat-raised-button color="primary" [disabled]="!customerForm.form.valid">Submit</button>
+    </form>
+
+  <!-- TODO: remove this: {{diagnostic}}
+  <div class="example-events">
+      <div *ngFor="let e of events">{{e}}</div>
+    </div> -->
+  </mat-card>
+  </div>

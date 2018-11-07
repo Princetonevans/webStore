@@ -1,4 +1,5 @@
 <div class="container" style="margin-top: 20px">
+  <h1>Drop Us a Line</h1>
 <mat-card class="card">
 
   <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
@@ -16,8 +17,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Description" maxLength="500" [(ngModel)]="model.description" name="description"></textarea>
-        <mat-hint align="end">{{input.value?.length || 0}}/500</mat-hint>
+        <textarea matInput placeholder="Description" #input maxLength="500" [(ngModel)]="model.description" name="description"></textarea>
+        <mat-hint align="end">{{input.value?.length || 0 }}/500</mat-hint>
       </mat-form-field>
 
       <mat-form-field color="accent">

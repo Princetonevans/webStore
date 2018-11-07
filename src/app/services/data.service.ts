@@ -3,13 +3,18 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Contact } from '../contact/contact';
+import { Customer } from '../customer/customer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class DataService {
+
 
   private contactUrl = 'https://contacts-api-app.herokuapp.com/contacts'
+
+  private customerUrl = 'https://contacts-api-app.herokuapp.com/customers'
+  public model: Contact[];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,12 +25,18 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<any> {
-    return this.http.get<any>(this.contactUrl).pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
+  getContacts(): Observable<Contact[]> {
+
+    return this.http.get<Contact[]>(this.contactUrl).pipe(tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => this.model = data));
   }
 
   createContacts(model): Observable<Contact> {
     return this.http.post<Contact>(this.contactUrl, model, this.httpOptions)
+  }
+
+  createCustomer(customer): Observable<Customer> {
+    return this.http.post<Customer>(this.customerUrl, customer, this.httpOptions)
   }
 
   // getBlogs(): Observable<any> {

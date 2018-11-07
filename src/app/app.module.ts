@@ -15,7 +15,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent, PizzaPartyComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactService } from './services/contact.service';
+import { DataService } from './services/data.service';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './services/customer.service';
 
 
 const appRoutes: Routes = [
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'customer', component: CustomerComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     FooterComponent,
     ContactComponent,
-    PizzaPartyComponent
+    PizzaPartyComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   entryComponents: [PizzaPartyComponent],
-  providers: [ContactService],
+  providers: [DataService, CustomerService],
   bootstrap: [AppComponent]
 })
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contact } from './contact';
 import { MatDatepickerInputEvent, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { ContactService } from '../services/contact.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-contact',
@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
   date;
   constructor(public snackBar: MatSnackBar,
               private router: Router,
-              private contactService: ContactService) {
+              private dataService: DataService) {
 
   }
 
@@ -30,7 +30,7 @@ export class ContactComponent implements OnInit {
     this.snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 2000,
     });
-    this.contactService.createContacts(this.model)
+    this.dataService.createContacts(this.model)
     .subscribe(contact => this.contact.push(this.model))
     this.router.navigate(['/home'])
   }
