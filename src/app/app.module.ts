@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent, PizzaPartyComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactService } from './services/contact.service';
 
 
 const appRoutes: Routes = [
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   entryComponents: [PizzaPartyComponent],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 

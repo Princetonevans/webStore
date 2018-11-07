@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contact } from './contact';
 import { MatDatepickerInputEvent, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,11 +16,12 @@ export class ContactComponent implements OnInit {
   // model = new Contact('Princeton', 'Princetonevans@yahoo.com', 'Big Blog', '2018-11-09T06:00:00.000Z', 8322353613, 'Logo');
   model = new Contact('', '', '', '', null, '');
   submitted = false;
-
+  contact: any[] = [];
   minDate;
   date;
   constructor(public snackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private contactService: ContactService) {
 
   }
 
@@ -28,7 +30,8 @@ export class ContactComponent implements OnInit {
     this.snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 2000,
     });
-    console.log(this.model);
+    this.contactService.createContacts(this.model)
+    .subscribe(contact => this.contact.push(this.model))
     this.router.navigate(['/home'])
   }
 
