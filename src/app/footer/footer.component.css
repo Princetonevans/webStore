@@ -1,18 +1,9 @@
 
 
 .footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  height: 50px;
-  /* left: 0;
 
-
-
-  color: white;
-  margin-top: 50px; */
   background: #3f51b5;
-  text-align: center;
+
 }
 
 .icon {
