@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material';
 import { MaterialModule } from './shared/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule }   from '@angular/forms';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './services/customer.service';
+import { UxComponent } from './ux/ux.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'customer', component: CustomerComponent },
+  { path: 'ux', component: UxComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
@@ -43,7 +46,8 @@ const appRoutes: Routes = [
     FooterComponent,
     ContactComponent,
     PizzaPartyComponent,
-    CustomerComponent
+    CustomerComponent,
+    UxComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ const appRoutes: Routes = [
     MatTableModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   entryComponents: [PizzaPartyComponent],
   providers: [DataService, CustomerService],

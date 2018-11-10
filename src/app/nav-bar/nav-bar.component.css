@@ -2,8 +2,12 @@
   background: #3f51b5;
 }
 
-.unread {
+/* .unread {
   color: blue;
   background-color: white;
-}
+} */
 
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
