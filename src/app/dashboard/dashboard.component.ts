@@ -51,14 +51,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.dataService.getContacts()
-    .subscribe(
-      data => this.dataSource.data = data);
+    .subscribe(data => this.dataSource.data = data);
       this.dataSource.paginator = this.contactPaginator;
       this.dataSource.sort = this.contactSort;
 
       this.customerService.getCustomers()
-    .subscribe(
-      data => this.customerDataSource.data = data);
+    .subscribe(data => this.customerDataSource.data = data);
       this.customerDataSource.paginator = this.customerPaginator;
       this.customerDataSource.sort = this.customerSort;
 

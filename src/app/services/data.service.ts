@@ -38,11 +38,4 @@ export class DataService {
   createCustomer(customer): Observable<Customer> {
     return this.http.post<Customer>(this.customerUrl, customer, this.httpOptions)
   }
-
-  // getBlogs(): Observable<any> {
-  //   return this.http.get<any>(this.blogsUrl).pipe(
-  //          tap(data => console.log('All: ' + JSON.stringify(data))),
-  //          catchError(this.handleError)
-  //   );
-  // }
 }

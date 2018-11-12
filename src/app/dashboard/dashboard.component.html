@@ -1,7 +1,96 @@
-<div class="container">
-  <h1>Welcome to your Dashboard</h1>
 
-  <mat-tab-group>
+<div class="row base-card" style="margin: 20px">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-primary pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Sales</h2>
+              <h3 class="fw-normal m-0">4,983</h3>
+           </div>
+           <div class="dash-icon">
+              <!-- <i class="fas fa-dollar-sign fa-4x" ></i> -->
+              <!-- <i class="icon-wallet icons font-xl"></i> -->
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-success pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Likes</h2>
+              <h3 class="fw-normal m-0">47,513</h3>
+           </div>
+           <div class="dash-icon">
+              <!-- <i class="far fa-thumbs-up fa-4x"></i> -->
+              <!-- <i class="icon-like font-xl"></i> -->
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-warning pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Download</h2>
+              <h3 class="fw-normal m-0">1,89,200</h3>
+           </div>
+           <div class="dash-icon">
+              <!-- <i class="fas fa-cloud-download-alt fa-4x"></i> -->
+              <!-- <i class="icon-cloud-download icons font-xl"></i> -->
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-success pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Profit</h2>
+              <h3 class="fw-normal m-0">$98,575</h3>
+           </div>
+           <div class="dash-icon">
+              <i class="icon-graph icons font-xl"></i>
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-danger pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Message</h2>
+              <h3 class="fw-normal m-0">135</h3>
+           </div>
+           <div class="dash-icon">
+              <i class="icon-envelope-open icons font-xl"></i>
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 mb-4 col-one-half-lg-down fade-in-up">
+     <div class="bg-primary pl-2 lazy-up">
+        <div class="d-flex bg-light justify-content-between p-4">
+           <div>
+              <h2 class="fw-normal">Member</h2>
+              <h3 class="fw-normal m-0">2,56,784</h3>
+           </div>
+           <div class="dash-icon">
+              <i class="icon-people icons font-xl"></i>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <h1>Welcome to your Dashboard</h1>
+  <div style="margin:auto">
+  <mat-spinner *ngIf="dataSource.data.length <= 0"></mat-spinner>
+</div>
+  <mat-tab-group *ngIf="dataSource.data.length > 0">
     <mat-tab label="Contacts"> <div class="mat-elevation-z8">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -55,7 +144,7 @@
       </table>
 
       <!-- Paginator -->
-      <mat-paginator #contactPaginator="matPaginator" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      <mat-paginator  [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
     </div></mat-tab>
 
