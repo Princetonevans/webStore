@@ -6,6 +6,7 @@ import { MaterialModule } from './shared/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule }   from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { DragulaModule } from 'ng2-dragula';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -20,6 +21,7 @@ import { DataService } from './services/data.service';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './services/customer.service';
 import { UxComponent } from './ux/ux.component';
+import { TodoComponent } from './todo/todo.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'customer', component: CustomerComponent },
+  { path: 'todo', component: TodoComponent },
   { path: 'ux', component: UxComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
     ContactComponent,
     PizzaPartyComponent,
     CustomerComponent,
-    UxComponent
+    UxComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ const appRoutes: Routes = [
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    DragulaModule.forRoot()
+
   ],
   entryComponents: [PizzaPartyComponent],
   providers: [DataService, CustomerService],
