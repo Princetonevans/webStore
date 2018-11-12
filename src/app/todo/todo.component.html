@@ -1,90 +1,103 @@
 <div class="container">
-    <div fxLayout="row" fxLayout.xs="column">
+  <div fxLayout="row" fxLayout.xs="column">
     <div class="chk-block">
-        <div class="chk-block-title">
-            <h3 class="text-capitalize">Trello</h3>
+      <div class="chk-block-title">
+        <h3 class="text-capitalize">Trello</h3>
+      </div>
+
+      <form (ngSubmit)="addTodo($event)">
+        <div class="example-container">
+          <mat-form-field style="margin-right: 5px">
+            <input matInput mat-raised-button placeholder="Add ToDo" [(ngModel)]="model.name" name="name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Add Description" [(ngModel)]="model.des" name="des">
+          </mat-form-field>
+          <button mat-button mat-raised-button color="primary">Click me!</button>
         </div>
-        <div class="chk-block-content">
-            <div class="row">
-                <div style="margin-right:20px" >
-                    <h2 class="mb-3">To Do</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <div [dragula]='"dragable-bag"'>
-                                    <div *ngFor="let grp of group1">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <div class="d-flex align-items-start flex-column">
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="d-block">{{ grp.name }}</span>
-                                                    <span class="d-block">{{ grp.des }}</span>
-                                                </label>
-                                            </div>
-                                            <div class="d-flex align-items-end flex-column">
-                                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </form>
+      <div class="chk-block-content">
+        <div class="row">
+          <div style="margin-right:20px">
 
-                <div style="margin-right:20px">
-                    <h2 class="mb-3">In Progress</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <div  [dragula]='"dragable-bag"'>
-                                <div *ngFor="let grp2 of group2">
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <div class="d-flex align-items-start flex-column">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="d-block">{{ grp2.name }}</span>
-                                                <span class="d-block">{{ grp2.des }}</span>
-                                            </label>
-                                        </div>
-                                        <div class="d-flex align-items-end flex-column">
-                                            <i class="fa fa-bars" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h2 class="mb-3">To Do</h2>
+            <div class="card">
+              <div class="card-body">
+                <div [dragula]='"dragable-bag"'>
+                  <div *ngFor="let grp of group1">
+                    <div class="d-flex justify-content-between mb-3">
+                      <div class="d-flex align-items-start flex-column">
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="d-block">{{ grp.name }}</span>
+                          <span class="d-block">{{ grp.des }}</span>
+                        </label>
+                      </div>
+                      <div class="d-flex align-items-end flex-column">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </div>
                     </div>
+                  </div>
                 </div>
-
-                <div style="margin-right:20px">
-                    <h2 class="mb-3">Done</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <div  [dragula]='"dragable-bag"'>
-                                <div *ngFor="let grp2 of group2">
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <div class="d-flex align-items-start flex-column">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="d-block">{{ grp2.name }}</span>
-                                                <span class="d-block">{{ grp2.des }}</span>
-                                            </label>
-                                        </div>
-                                        <div class="d-flex align-items-end flex-column">
-                                            <i class="fa fa-bars" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+
+          <div style="margin-right:20px">
+            <h2 class="mb-3">In Progress</h2>
+            <div class="card">
+              <div class="card-body">
+                <div [dragula]='"dragable-bag"'>
+                  <div *ngFor="let grp2 of group2">
+                    <div class="d-flex justify-content-between mb-3">
+                      <div class="d-flex align-items-start flex-column">
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="d-block">{{ grp2.name }}</span>
+                          <span class="d-block">{{ grp2.des }}</span>
+                        </label>
+                      </div>
+                      <div class="d-flex align-items-end flex-column">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-right:20px">
+            <h2 class="mb-3">Done</h2>
+            <div class="card">
+              <div class="card-body">
+                <div [dragula]='"dragable-bag"'>
+                  <div *ngFor="let grp2 of group2">
+                    <div class="d-flex justify-content-between mb-3">
+                      <div class="d-flex align-items-start flex-column">
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="d-block">{{ grp2.name }}</span>
+                          <span class="d-block">{{ grp2.des }}</span>
+                        </label>
+                      </div>
+                      <div class="d-flex align-items-end flex-column">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
 
   </div>
 </div>
-

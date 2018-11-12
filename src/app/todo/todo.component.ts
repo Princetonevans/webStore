@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from './todo';
 
 @Component({
   selector: 'app-todo',
@@ -9,8 +10,23 @@ export class TodoComponent implements OnInit {
 
   constructor() { }
 
+  model = new Todo('')
+
   ngOnInit() {
   }
+
+  addTodo(event) {
+    this.group1.push(this.model);
+  }
+
+deleteTodo() {
+  console.log('deleted')
+}
+
+
+
+
+
 
   group1: Object[] = [{
 		name: 'Bernice Riley',
@@ -52,4 +68,7 @@ export class TodoComponent implements OnInit {
         des: 'Front End Developer'
   }];
 
+  get diagnostic() { return JSON.stringify(this.model); }
 }
+
+
