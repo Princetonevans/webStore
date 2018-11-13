@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatTableModule} from '@angular/material';
 import { MaterialModule } from './shared/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { DragulaModule } from 'ng2-dragula';
 
@@ -22,6 +22,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './services/customer.service';
 import { UxComponent } from './ux/ux.component';
 import { TodoComponent } from './todo/todo.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
 
 
 const appRoutes: Routes = [
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'customer', component: CustomerComponent },
   { path: 'todo', component: TodoComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
@@ -51,7 +54,8 @@ const appRoutes: Routes = [
     PizzaPartyComponent,
     CustomerComponent,
     UxComponent,
-    TodoComponent
+    TodoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -62,11 +66,12 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     FlexLayoutModule,
-    DragulaModule.forRoot()
+    DragulaModule.forRoot(),
+    ReactiveFormsModule
 
   ],
   entryComponents: [PizzaPartyComponent],
-  providers: [DataService, CustomerService],
+  providers: [DataService, CustomerService, AuthService],
   bootstrap: [AppComponent]
 })
 

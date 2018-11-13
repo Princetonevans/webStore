@@ -28,27 +28,29 @@ deleteTodo() {
 
 
 
-  group1: Object[] = [{
-		name: 'Bernice Riley',
-        des: 'Sr. Developer'
-	},{
-		name: 'Rob Throne',
-        des: 'Developer'
-	},{
-		name: 'Lia Levele',
-        des: 'Php Developer'
-	},{
-		name: 'Kara Cross',
-        des: 'Front End Developer'
-	},{
-		name: 'Tim Ross',
-        des: 'Designer'
-	},{
-		name: 'Heath Brook',
-        des: 'iOS Developer'
-	}];
+  group1: Object[] = [];
 
-	group2: any[] = [{
+  // = [{
+	// 	name: 'Bernice Riley',
+  //       des: 'Sr. Developer'
+	// },{
+	// 	name: 'Rob Throne',
+  //       des: 'Developer'
+	// },{
+	// 	name: 'Lia Levele',
+  //       des: 'Php Developer'
+	// },{
+	// 	name: 'Kara Cross',
+  //       des: 'Front End Developer'
+	// },{
+	// 	name: 'Tim Ross',
+  //       des: 'Designer'
+	// },{
+	// 	name: 'Heath Brook',
+  //       des: 'iOS Developer'
+	// }];
+
+  group2: any[] = [{
 		name: 'Kenny White',
          des: 'Sr. Developer'
 	},{
