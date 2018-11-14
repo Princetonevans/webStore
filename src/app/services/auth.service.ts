@@ -1,47 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../login/user';
-import { pluck, share, shareReplay, tap } from 'rxjs/operators';
-import * as moment from "moment";
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
+  apiUrl ='localhost:3000'
+    constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) {
+    login(username: string, password: string) {
+        return this.http.post<any>(this.apiUrl,  {username, password })
+            .pipe(map(user => {
+                // login successful if there's a user in the response
+                if (user) {
+                    // store user details and basic auth credentials in local storage
+                    // to keep user logged in between page refreshes
+                    user.authdata = window.btoa(username + ':' + password);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
 
-    }
-
-    login(email:string, password:string ) {
-        return this.http.post<User>('/api/login', {email, password})
-        // .tap(res => )
-        //     .tap(res => this.setSession)
-        //     .shareReplay();
-    }
-
-    private setSession(authResult) {
-        const expiresAt = moment().add(authResult.expiresIn,'second');
-
-        localStorage.setItem('id_token', authResult.idToken);
-        localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+                return user;
+            }));
     }
 
     logout() {
-        localStorage.removeItem("id_token");
-        localStorage.removeItem("expires_at");
-    }
-
-    public isLoggedIn() {
-        return moment().isBefore(this.getExpiration());
-    }
-
-    isLoggedOut() {
-        return !this.isLoggedIn();
-    }
-
-    getExpiration() {
-        const expiration = localStorage.getItem("expires_at");
-        const expiresAt = JSON.parse(expiration);
-        return moment(expiresAt);
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
     }
 }

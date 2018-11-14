@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { DragulaModule } from 'ng2-dragula';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -16,24 +17,29 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent, PizzaPartyComponent } from './contact/contact.component';
-import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './services/data.service';
-import { CustomerComponent } from './customer/customer.component';
-import { CustomerService } from './services/customer.service';
-import { UxComponent } from './ux/ux.component';
 import { TodoComponent } from './todo/todo.component';
 import { LoginComponent } from './login/login.component';
+import { UxComponent } from './ux/ux.component';
+import { CustomerComponent } from './customer/customer.component';
+
+import { fakeBackendProvider } from './helper/fake-backend';
+import {  ErrorInterceptor } from './helper/error.interceptor';
+import { BasicAuthInterceptor } from './helper/basic-auth.interceptor';
+import { AuthGuard } from './guards/auth.guard'
+
+import { DataService } from './services/data.service';
+import { CustomerService } from './services/customer.service';
 import { AuthService } from './services/auth.service';
 
 
 const appRoutes: Routes = [
 
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'portfolio', component: PortfolioComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
-  { path: 'customer', component: CustomerComponent },
-  { path: 'todo', component: TodoComponent },
+  { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] },
+  { path: 'todo', component: TodoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -71,7 +77,14 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [PizzaPartyComponent],
-  providers: [DataService, CustomerService, AuthService],
+  providers: [DataService,
+             CustomerService,
+             AuthService,
+             { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+             { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 
