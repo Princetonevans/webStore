@@ -34,9 +34,9 @@ import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
 
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent},
   { path: 'portfolio', component: PortfolioComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] },
   { path: 'todo', component: TodoComponent, canActivate: [AuthGuard] },
