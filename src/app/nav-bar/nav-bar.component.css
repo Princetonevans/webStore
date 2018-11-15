@@ -2,10 +2,10 @@
   background: #3f51b5;
 }
 
-/* .unread {
-  color: blue;
-  background-color: white;
-} */
+.unread {
+  color: white;
+  /* background-color: white; */
+}
 
 .example-button-row button,
 .example-button-row a {
