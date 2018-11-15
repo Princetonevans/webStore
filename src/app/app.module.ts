@@ -22,9 +22,6 @@ import { LoginComponent } from './login/login.component';
 import { UxComponent } from './ux/ux.component';
 import { CustomerComponent } from './customer/customer.component';
 
-import { fakeBackendProvider } from './helper/fake-backend';
-import {  ErrorInterceptor } from './helper/error.interceptor';
-import { BasicAuthInterceptor } from './helper/basic-auth.interceptor';
 import { AuthGuard } from './guards/auth.guard'
 
 import { DataService } from './services/data.service';
@@ -79,12 +76,7 @@ const appRoutes: Routes = [
   entryComponents: [PizzaPartyComponent],
   providers: [DataService,
              CustomerService,
-             AuthService,
-             { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-             { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
-        fakeBackendProvider],
+             AuthService],
   bootstrap: [AppComponent]
 })
 

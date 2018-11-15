@@ -13,8 +13,16 @@ export class NavBarComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-  //  this.badgeCount = this.dataService.model.length;
 
+    this.dataService.getContacts()
+      .subscribe(data => {
+        if (data) {
+          this.badgeCount = data.length;
+          console.log(this.badgeCount);
+        } else {
+          this.badgeCount = 0;
+        }
 
+      })
   }
 }

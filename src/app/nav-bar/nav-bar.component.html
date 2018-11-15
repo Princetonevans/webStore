@@ -1,17 +1,29 @@
-<mat-card >
-  <div class="example-button-row">
+<!-- <mat-card > -->
+  <div class="">
     <button mat-flat-button color="primary" routerLink="/home" routerLinkActive="active-link">Home</button>
+    <mat-divider></mat-divider>
     <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">Porfolio</button>
+    <mat-divider></mat-divider>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/ux" routerLinkActive="active-link">UX Design</button>
       <button mat-menu-item routerLink="/portfolio" routerLinkActive="active-link">Web Development</button>
     </mat-menu>
     <button mat-flat-button color="primary" routerLink="/contact" routerLinkActive="active-link">Contact Us</button>
+    <mat-divider></mat-divider>
     <button mat-flat-button color="primary" routerLink="/customer" routerLinkActive="active-link"> Create Customer</button>
+    <mat-divider></mat-divider>
     <button mat-flat-button color="primary" routerLink="/todo" routerLinkActive="active-link">To Do</button>
-    <button class="unread float-right" routerLink="/dashboard" mat-raised-button color="primary" matBadge="5"
-      matBadgePosition="before" matBadgeColor="warn">
+    <mat-divider></mat-divider>
+    <button class="unread" routerLink="/dashboard" mat-raised-button color="primary" matBadge="{{badgeCount}}"
+       matBadgeColor="warn">
       Unread
     </button>
   </div>
-</mat-card>
+<!-- </mat-card> -->
+
+
+<!-- <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+    <mat-drawer-content>Main content</mat-drawer-content>
+  </mat-drawer-container> -->
+
