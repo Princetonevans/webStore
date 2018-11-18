@@ -9,6 +9,10 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { DragulaModule } from 'ng2-dragula';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
@@ -27,6 +31,7 @@ import { AuthGuard } from './guards/auth.guard'
 import { DataService } from './services/data.service';
 import { CustomerService } from './services/customer.service';
 import { AuthService } from './services/auth.service';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 
 const appRoutes: Routes = [
@@ -70,13 +75,16 @@ const appRoutes: Routes = [
     FormsModule,
     FlexLayoutModule,
     DragulaModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+   AngularFireDatabaseModule,
 
   ],
   entryComponents: [PizzaPartyComponent],
   providers: [DataService,
              CustomerService,
-             AuthService],
+             AuthService,
+            AngularFirestore],
   bootstrap: [AppComponent]
 })
 
