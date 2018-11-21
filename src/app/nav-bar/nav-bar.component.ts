@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { catchError, tap } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,11 @@ import { catchError, tap } from 'rxjs/operators';
 export class NavBarComponent implements OnInit {
 
   badgeCount = null;
-  constructor(private dataService: DataService) { }
+  // user = localStorage.getItem('currentUser')
+  constructor(private dataService: DataService,
+              private authService: AuthService) { }
+
+
 
   ngOnInit() {
 
@@ -18,7 +23,6 @@ export class NavBarComponent implements OnInit {
       .subscribe(data => {
         if (data) {
           this.badgeCount = data.length;
-          console.log(this.badgeCount);
         } else {
           this.badgeCount = 0;
         }

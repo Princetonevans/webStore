@@ -6,57 +6,73 @@ import * as firebase from 'firebase';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  apiUrl ='localhost:3000';
+  apiUrl = 'localhost:3000';
 
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    // login(username: string, password: string) {
-    //     return this.http.post<any>(this.apiUrl,  {username, password })
-    //         .pipe(map(user => {
-    //             // login successful if there's a user in the response
-    //             if (user) {
-    //                 // store user details and basic auth credentials in local storage
-    //                 // to keep user logged in between page refreshes
-    //                 user.authdata = window.btoa(username + ':' + password);
-    //                 localStorage.setItem('currentUser', JSON.stringify(user));
-    //             }
+  // login(username: string, password: string) {
+  //     return this.http.post<any>(this.apiUrl,  {username, password })
+  //         .pipe(map(user => {
+  //             // login successful if there's a user in the response
+  //             if (user) {
+  //                 // store user details and basic auth credentials in local storage
+  //                 // to keep user logged in between page refreshes
+  //                 user.authdata = window.btoa(username + ':' + password);
+  //                 localStorage.setItem('currentUser', JSON.stringify(user));
+  //             }
 
-    //             return user;
-    //         }));
-    // }
+  //             return user;
+  //         }));
+  // }
 
 
-login(email, password) {
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-    } else {
-      // User is signed out.
+  login(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
       // ...
-    }
-  });
+      var user = firebase.auth().currentUser;
 
-}
+      var name, email, photoUrl, uid, emailVerified;
+      if (user != null) {
+        name = user.displayName;
+        email = user.email;
+        photoUrl = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid;
+
+      }
+
+
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        console.log(user)
+        console.log(localStorage.getItem('currentUser'))
+      } else {
+        // User is signed out.
+        // ...
+      }
+    });
+
+  }
 
 
 
-    logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-    }
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+  }
 }
