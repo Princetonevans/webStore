@@ -47,7 +47,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
 ]
