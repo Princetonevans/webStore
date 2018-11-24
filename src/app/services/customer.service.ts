@@ -23,8 +23,8 @@ export class CustomerService {
 
   getCustomers(): Observable<Customer[]> {
 
-    return this.http.get<Customer[]>(this.customerUrl).pipe(tap(data => console.log('All: ' + JSON.stringify(data))),
-      tap(data => this.model = data));
+    return this.http.get<Customer[]>(this.customerUrl).pipe(tap(data => this.model = data))
+
   }
   createCustomer(customer): Observable<Customer> {
     return this.http.post<Customer>(this.customerUrl, customer, this.httpOptions)

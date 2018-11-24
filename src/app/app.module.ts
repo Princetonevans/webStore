@@ -8,6 +8,11 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { DragulaModule } from 'ng2-dragula';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -27,6 +32,8 @@ import { AuthGuard } from './guards/auth.guard'
 import { DataService } from './services/data.service';
 import { CustomerService } from './services/customer.service';
 import { AuthService } from './services/auth.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -39,7 +46,8 @@ const appRoutes: Routes = [
   { path: 'todo', component: TodoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
 ]
@@ -58,7 +66,8 @@ const appRoutes: Routes = [
     CustomerComponent,
     UxComponent,
     TodoComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -70,13 +79,17 @@ const appRoutes: Routes = [
     FormsModule,
     FlexLayoutModule,
     DragulaModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+   AngularFireDatabaseModule,
+   AngularFireAuthModule
 
   ],
   entryComponents: [PizzaPartyComponent],
   providers: [DataService,
              CustomerService,
-             AuthService],
+             AuthService,
+            AngularFirestore],
   bootstrap: [AppComponent]
 })
 

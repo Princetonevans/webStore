@@ -1,29 +1,44 @@
-<mat-card >
-  <div class="example-button-row">
-    <button mat-flat-button color="primary" routerLink="/home" routerLinkActive="active-link">Home</button>
-
-    <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">Porfolio</button>
-
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/ux" routerLinkActive="active-link">UX Design</button>
-      <button mat-menu-item routerLink="/portfolio" routerLinkActive="active-link">Web Development</button>
-    </mat-menu>
-    <button mat-flat-button color="primary" routerLink="/contact" routerLinkActive="active-link">Contact Us</button>
-
-    <button mat-flat-button color="primary" routerLink="/customer" routerLinkActive="active-link"> Create Customer</button>
-
-    <button mat-flat-button color="primary" routerLink="/todo" routerLinkActive="active-link">To Do</button>
-
-    <button class="unread float-right" routerLink="/dashboard" mat-raised-button color="primary" matBadge="{{badgeCount}}"
-       matBadgeColor="warn">
-      Unread
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand"  routerLink="/home" routerLinkActive="active-link">Princeton</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/home" routerLinkActive="active-link">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/contact" routerLinkActive="active-link">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="user"  routerLink="/customer" routerLinkActive="active-link">Create Customer</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Portfolio
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" mat-menu-item routerLink="/ux" routerLinkActive="active-link">UX Design</a>
+          <a class="dropdown-item" mat-menu-item routerLink="/portfolio" routerLinkActive="active-link">UI Development</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="user"  routerLink="/todo" routerLinkActive="active-link">Todo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  *ngIf="user"  routerLink="/profile" routerLinkActive="active-link">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  *ngIf="!user" routerLink="/login" routerLinkActive="active-link">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="user"   (click)="logout()">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="user" class="float-right" routerLink="/dashboard" mat-raised-button color="primary" matBadge="{{badgeCount}}"
+        matBadgeColor="warn">Dashboard</a>
+      </li>
+    </ul>
   </div>
-</mat-card>
-
-
-<!-- <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
-  </mat-drawer-container> -->
-
+</nav>

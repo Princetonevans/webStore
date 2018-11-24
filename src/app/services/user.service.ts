@@ -12,7 +12,7 @@ export class UserService {
   apiUrl = 'localhost:3000/users'
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<User[]>(this.apiUrl);
-    }
+    // getAll() {
+    //     return this.http.get<User[]>(this.apiUrl);
+    // }
 }
