@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
       this.customerDataSource.sort = this.customerSort;
 
       this.user = this.authService.user;
-      console.log(this.user)
+
   }
 
 
