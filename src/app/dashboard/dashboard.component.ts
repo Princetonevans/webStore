@@ -3,6 +3,7 @@ import {MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { DataService } from '../services/data.service';
 import { CustomerService } from '../services/customer.service';
+import { AuthService } from '../services/auth.service';
 
 export interface CustomerElement {
   name: string;
@@ -27,6 +28,7 @@ export interface CustomerElement {
 })
 export class DashboardComponent implements OnInit {
 
+  user;
   contacts;
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'description', 'created_at'];
   customerDisplayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'picker', 'total', 'notes'];
@@ -46,7 +48,8 @@ export class DashboardComponent implements OnInit {
   @ViewChild('customerSort') customerSort: MatSort;
 
   constructor(private dataService: DataService,
-              private customerService: CustomerService) { }
+              private customerService: CustomerService,
+              private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -60,6 +63,8 @@ export class DashboardComponent implements OnInit {
       this.customerDataSource.paginator = this.customerPaginator;
       this.customerDataSource.sort = this.customerSort;
 
+      this.user = this.authService.user;
+      console.log(this.user)
   }
 
 

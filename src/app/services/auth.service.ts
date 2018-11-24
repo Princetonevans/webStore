@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
   apiUrl = 'localhost:3000';
+  user;
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   // login(username: string, password: string) {
   //     return this.http.post<any>(this.apiUrl,  {username, password })
@@ -59,8 +61,16 @@ export class AuthService {
         var uid = user.uid;
         var providerData = user.providerData;
         localStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(user)
-        console.log(localStorage.getItem('currentUser'))
+
+
+        user.updateProfile({
+          displayName: "Princeton Evans",
+          photoURL: "https://icon2.kisspng.com/20180526/vcl/kisspng-picsart-photo-studio-thanos-thanos-glove-5b0a2d38b18a81.8664775915273935927272.jpg"
+        }).then(function () {
+          // Update successful.
+        }).catch(function (error) {
+          // An error happened.
+        });
       } else {
         // User is signed out.
         // ...
@@ -74,5 +84,8 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/home'])
+    return  firebase.auth().signOut();
+
   }
 }

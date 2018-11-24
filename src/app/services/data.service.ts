@@ -27,8 +27,8 @@ export class DataService {
 
   getContacts(): Observable<Contact[]> {
 
-    return this.http.get<Contact[]>(this.contactUrl).pipe(tap(data => console.log('All: ' + JSON.stringify(data))),
-      tap(data => this.model = data));
+    return this.http.get<Contact[]>(this.contactUrl).pipe(tap(data => this.model = data))
+
   }
 
   createContacts(model): Observable<Contact> {

@@ -13,6 +13,7 @@
     <button *ngIf="user" mat-flat-button color="primary" routerLink="/customer" routerLinkActive="active-link"> Create Customer</button>
 
     <button *ngIf="user" mat-flat-button color="primary" routerLink="/todo" routerLinkActive="active-link">To Do</button>
+    <button *ngIf="user" mat-flat-button color="primary" routerLink="/profile" routerLinkActive="active-link">Profile</button>
 
 
     <button *ngIf="user" class="unread float-right" routerLink="/dashboard" mat-raised-button color="primary" matBadge="{{badgeCount}}"
@@ -21,6 +22,9 @@
     </button>
     <button *ngIf="!user" class="unread float-right" routerLink="/login" mat-raised-button color="primary">
       Login
+    </button>
+    <button *ngIf="user" class="unread float-right" (click)="logout()" mat-raised-button color="primary">
+       Logout
     </button>
   </div>
 </mat-card>

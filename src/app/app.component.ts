@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
 
 
 
@@ -21,14 +22,15 @@ export class AppComponent implements OnInit {
   title = 'webStore';
   userCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>
-
+  user;
 
     constructor(private afs: AngularFirestore) {
 
     }
     ngOnInit() {
       this.userCollection = this.afs.collection('users');
-      this.users = this.userCollection.valueChanges()
+      this.users = this.userCollection.valueChanges();
+
     }
 }
 

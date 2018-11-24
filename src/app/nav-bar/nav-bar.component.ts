@@ -11,9 +11,10 @@ import { AuthService } from '../services/auth.service';
 export class NavBarComponent implements OnInit {
 
   badgeCount = null;
-  // user = localStorage.getItem('currentUser')
+   user = localStorage.getItem('currentUser')
+
   constructor(private dataService: DataService,
-              private authService: AuthService) { }
+    private authService: AuthService) { }
 
 
 
@@ -28,5 +29,9 @@ export class NavBarComponent implements OnInit {
         }
 
       })
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }
