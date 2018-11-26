@@ -33,10 +33,10 @@
         <a class="nav-link"  *ngIf="!user" routerLink="/login" routerLinkActive="active-link">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="user"   (click)="logout()">Logout</a>
+        <a class="nav-link" *ngIf="user"  (click)="logout()">Logout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="user" class="float-right" routerLink="/dashboard" mat-raised-button color="primary" matBadge="{{badgeCount}}"
+        <a class="nav-link" *ngIf="user"  routerLink="/dashboard"  matBadge="{{badgeCount}}"
         matBadgeColor="warn">Dashboard</a>
       </li>
     </ul>
