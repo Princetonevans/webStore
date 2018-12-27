@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
 
   user;
   contacts;
+  customerId;
+  model: any[] = [];
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'description', 'created_at'];
   customerDisplayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'picker', 'total', 'notes'];
 
@@ -69,7 +71,12 @@ export class DashboardComponent implements OnInit {
 
 
   selected() {
-    console.log('working')
+    console.log('working');
+  }
+  onDelete() {
+    this.customerService.deleteCustomer(this.customerId)
+    .subscribe(model => this.model.push(this.model));
+
   }
 
 }

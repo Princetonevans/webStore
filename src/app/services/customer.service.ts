@@ -9,7 +9,9 @@ import { tap } from 'rxjs/internal/operators/tap';
 })
 export class CustomerService {
 
-  private customerUrl = 'https://contacts-api-app.herokuapp.com/customers'
+  private customerUrl = 'https://contacts-api-app.herokuapp.com/customers';
+
+
   public model: Customer[];
 
   httpOptions = {
@@ -19,14 +21,18 @@ export class CustomerService {
     })
   };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCustomers(): Observable<Customer[]> {
 
-    return this.http.get<Customer[]>(this.customerUrl).pipe(tap(data => this.model = data))
+    return this.http.get<Customer[]>(this.customerUrl).pipe(tap(data => this.model = data));
 
   }
   createCustomer(customer): Observable<Customer> {
-    return this.http.post<Customer>(this.customerUrl, customer, this.httpOptions)
+    return this.http.post<Customer>(this.customerUrl, customer, this.httpOptions);
+  }
+
+  deleteCustomer(id: number): Observable<{}> {
+    return this.http.delete(`https://contacts-api-app.herokuapp.com/customers/${id}`, this.httpOptions);
   }
 }

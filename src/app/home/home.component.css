@@ -80,7 +80,7 @@
 
   .bg-image {
     /* The image used */
-    background-image: url("../../assets/img/resort2.jpg");
+    background-image: url("../../assets/img/background_img.jpg");
 
     /* Add the blur effect */
     filter: blur(8px);
