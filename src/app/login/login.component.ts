@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
+
   loginForm: FormGroup;
   loading = false;
   submitted = false;
@@ -40,15 +41,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    let email = this.f.email.value;
-    let password = this.f.password.value;
+    const email = this.f.email.value;
+    const password = this.f.password.value;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.authService.login(email, password)
-    this.router.navigate(['/home'])
+    this.authService.login(email, password);
+    this.router.navigate(['/home']);
     // firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     //   // Handle Errors here.
     //   var errorCode = error.code;

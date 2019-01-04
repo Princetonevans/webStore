@@ -1,116 +1,41 @@
-@media only screen and (min-width: 600px) {
-
-  div.mobile {
-    display: none;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-    background: #333;
-    background-attachment: fixed;
-    background-size: cover;
-    border: 10px solid rgba(255, 255, 255, 0.5);
-  }
-
-  /* The only rule that matters */
-  #video-background {
-    /*  making the video fullscreen  */
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-  }
-
-  /* These just style the content */
-  article {
-    /*  just a fancy border  */
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* border: 10px solid rgba(255, 255, 255, 0.5); */
-    margin: 10px;
-  }
-
-  h1 {
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    font-size: 36px;
-    letter-spacing: 3px;
-    color: #fff;
-    /* font-family: Oswald, sans-serif; */
-    text-align: center;
-    font-family: 'Permanent Marker', cursive;
-  }
-
-  h1 span {
-    font-family: sans-serif;
-    letter-spacing: 0;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  h1 span a {
-    color: #fff;
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 
-@media only screen and (max-width: 600px) {
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
 
-  div.desktop {
-    display: none;
-  }
+.jumbotron-heading {
+  font-weight: 300;
+}
 
-  body,
-  html {
-    height: 100%;
-  }
+.jumbotron .container {
+  max-width: 40rem;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-  .bg-image {
-    /* The image used */
-    background-image: url("../../assets/img/background_img.jpg");
+footer p {
+  margin-bottom: .25rem;
+}
 
-    /* Add the blur effect */
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+.image {
+  background-image: url('https://www.brighterir.com/wp-content/uploads/2016/02/coffee-and-code-1200x500-V1-1024x427.jpg')
+}
 
-    /* Full height */
-    height: 1000px;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  /* Position text in the middle of the page/image */
-  .bg-text {
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/opacity/see-through */
-    color: white;
-    font-weight: bold;
-    border: 3px solid #f1f1f1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 80%;
-    padding: 20px;
-    text-align: center;
-  }
+.text {
+  color: white;
 }
