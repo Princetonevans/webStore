@@ -33,7 +33,7 @@ footer p {
 }
 
 .image {
-  background-image: url('https://www.brighterir.com/wp-content/uploads/2016/02/coffee-and-code-1200x500-V1-1024x427.jpg')
+  background-image: url(../../assets/img/banner.jpg)
 }
 
 .text {
