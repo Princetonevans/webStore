@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatTableModule} from '@angular/material';
 import { MaterialModule } from './shared/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { DragulaModule } from 'ng2-dragula';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -27,7 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { UxComponent } from './ux/ux.component';
 import { CustomerComponent } from './customer/customer.component';
 
-import { AuthGuard } from './guards/auth.guard'
+import { AuthGuard } from './guards/auth.guard';
 
 import { DataService } from './services/data.service';
 import { CustomerService } from './services/customer.service';
@@ -38,7 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
 
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'contact', component: ContactComponent },
@@ -47,10 +47,10 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
-]
+];
 
 @NgModule({
   declarations: [
