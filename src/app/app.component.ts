@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Router, NavigationEnd } from '@angular/router';
+import { Gtag } from 'angular-gtag';
 
 
 
@@ -26,14 +27,17 @@ export class AppComponent implements OnInit {
   user;
 
     constructor(private afs: AngularFirestore,
-                public router: Router) {
-                  this.router.events.subscribe(event => {
-                    if (event instanceof NavigationEnd) {
-                      (<any>window).ga('set', 'page', event.urlAfterRedirects);
-                      (<any>window).ga('send', 'pageview');
-                    }
-                  });
+                public router: Router,
+                        gtag: Gtag) {
+                  // this.router.events.subscribe(event => {
+                  //   if (event instanceof NavigationEnd) {
+                  //     (<any>window).ga('set', 'page', event.urlAfterRedirects);
+                  //     (<any>window).ga('send', 'pageview');
+                  //   }
+                    gtag.pageview();
+                  // };
     }
+
     ngOnInit() {
       this.userCollection = this.afs.collection('users');
       this.users = this.userCollection.valueChanges();

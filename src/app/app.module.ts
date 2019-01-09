@@ -12,6 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { GtagModule } from 'angular-gtag';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MaterialModule,
     HttpClientModule,
+    GtagModule.forRoot({ trackingId: 'UA-132076132-1', trackPageviews: true }),
     FormsModule,
     FlexLayoutModule,
     DragulaModule.forRoot(),
