@@ -35,6 +35,14 @@
         </mat-select>
         <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Projected Budget" required [(ngModel)]="model.budgets" name="budgets">
+          <mat-option *ngFor="let budget of budgets" [value]="budget">{{budget}}</mat-option>
+
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
     </div>
     <button mat-raised-button color="primary" [disabled]="!contactForm.form.valid">Submit</button>
   </form>

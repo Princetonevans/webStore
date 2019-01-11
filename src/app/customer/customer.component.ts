@@ -11,7 +11,8 @@ import { CustomerService } from '../services/customer.service';
 })
 export class CustomerComponent implements OnInit {
 
-  types = ['Blog', 'Logo', 'Ecommerce', 'Landing Page'];
+  // tslint:disable-next-line:max-line-length
+  types = ['Website Design', 'Social Media Ads', 'Print Design', 'Logo Design', 'Design Only (flyers, business cards, post cards, etc)', 'Printing', 'Package Deal (Multiple Services)'];
 
   model = new Customer('', '', null, '', '', null, '');
   submitted = false;
@@ -31,12 +32,12 @@ export class CustomerComponent implements OnInit {
     //   duration: 2000,
     // });
     this.customerService.createCustomer(this.model)
-    .subscribe(customer => this.customer.push(this.model))
-    this.router.navigate(['/home'])
+    .subscribe(customer => this.customer.push(this.model));
+    this.router.navigate(['/home']);
   }
 
   get diagnostic() {
-    return JSON.stringify(this.model)
+    return JSON.stringify(this.model);
   }
 
   ngOnInit() {

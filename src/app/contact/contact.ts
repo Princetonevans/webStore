@@ -6,7 +6,8 @@ export class Contact {
     public description?: string,
     public picker?: string,
     public phone?: number,
-    public types?: string
+    public types?: string,
+    public budgets?: string
   ) {  }
 
 }
