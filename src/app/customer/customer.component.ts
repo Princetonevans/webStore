@@ -33,7 +33,7 @@ export class CustomerComponent implements OnInit {
     // });
     this.customerService.createCustomer(this.model)
     .subscribe(customer => this.customer.push(this.model));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   get diagnostic() {

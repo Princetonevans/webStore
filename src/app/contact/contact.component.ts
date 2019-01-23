@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit {
     });
     this.dataService.createContacts(this.model)
     .subscribe(contact => this.contact.push(this.model));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   // get diagnostic() {

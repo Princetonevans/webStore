@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(email, password);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     // firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     //   // Handle Errors here.
     //   var errorCode = error.code;
