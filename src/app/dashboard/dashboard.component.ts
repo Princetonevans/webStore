@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   contacts;
   customerId;
   model: any[] = [];
-  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'description', 'created_at'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'budgets', 'description', 'created_at'];
   customerDisplayedColumns: string[] = ['id', 'name', 'email', 'phone', 'types', 'picker', 'total', 'notes'];
 
   dataSource = new MatTableDataSource([]);
