@@ -36,6 +36,7 @@ import { AuthService } from './services/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { ProfileComponent } from './profile/profile.component';
 import { WebDesignComponent } from './web-design/web-design.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   { path: 'todo', component: TodoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'ux', component: UxComponent },
+  { path: 'cart', component: ShoppingCartComponent },
   { path: 'pricing/webdesign', component: WebDesignComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     TodoComponent,
     LoginComponent,
     ProfileComponent,
-    WebDesignComponent
+    WebDesignComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
