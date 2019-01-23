@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class NavBarComponent implements OnInit {
 
   badgeCount = null;
+  inCart = 0;
    user = localStorage.getItem('currentUser');
 
   constructor(private dataService: DataService,

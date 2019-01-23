@@ -11,18 +11,18 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.10",
-    "@angular/cdk": "^7.2.2",
-    "@angular/common": "^6.1.0",
-    "@angular/compiler": "^6.1.0",
-    "@angular/core": "^6.1.0",
+    "@angular/animations": "^7.1.4",
+    "@angular/cdk": "^7.2.1",
+    "@angular/common": "~7.1.0",
+    "@angular/compiler": "~7.1.0",
+    "@angular/core": "~7.1.0",
     "@angular/flex-layout": "^6.0.0-beta.18",
-    "@angular/forms": "^6.1.0",
+    "@angular/forms": "~7.1.0",
     "@angular/http": "^6.1.0",
     "@angular/material": "^7.2.2",
-    "@angular/platform-browser": "^6.1.0",
-    "@angular/platform-browser-dynamic": "^6.1.0",
-    "@angular/router": "^6.1.0",
+    "@angular/platform-browser": "~7.1.0",
+    "@angular/platform-browser-dynamic": "~7.1.0",
+    "@angular/router": "~7.1.0",
     "@nebular/theme": "^3.1.0",
     "angular-gtag": "^1.0.3",
     "angularfire2": "^5.1.1",
@@ -38,10 +38,10 @@
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.8.9",
-    "@angular/cli": "^6.2.9",
-    "@angular/compiler-cli": "^6.1.0",
-    "@angular/language-service": "^6.1.0",
+    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular/cli": "~7.1.4",
+    "@angular/compiler-cli": "~7.1.0",
+    "@angular/language-service": "~7.1.0",
     "@angularclass/hmr": "^2.1.3",
     "@schematics/angular": "^6.1.0",
     "@types/google.analytics": "0.0.39",
@@ -59,6 +59,6 @@
     "protractor": "^5.4.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "~3.1.6"
   }
 }
